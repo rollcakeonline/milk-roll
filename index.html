@@ -18,23 +18,6 @@
     .card:hover { transform: translateY(-8px); }
     footer { background-color: #F6C1CC; color: #fff; }
     .product img { width:120px; display:block; margin:10px auto; }
-
-    /* 勾選卡片動畫 */
-    .card.checked {
-      transform: scale(1.05);
-      border: 2px solid #D88C9A;
-      transition: transform 0.3s, border 0.3s;
-    }
-
-    /* 總價動畫 */
-    @keyframes totalChange {
-      0% { opacity: 0.3; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.1); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    .total-animate {
-      animation: totalChange 0.4s;
-    }
   </style>
 </head>
 <body>
@@ -45,7 +28,7 @@
     <a class="navbar-brand fw-bold" href="#">Fresh Roll</a>
     <ul class="navbar-nav ms-auto">
       <li class="nav-item"><a class="nav-link" href="#product">商品介紹</a></li>
-      <li class="nav-item"><a class="nav-link" href="#price">價目表</a></li>
+      <li class="nav-item"><a class="nav-link" href="#cartSection">價目表 / 購物車</a></li>
       <li class="nav-item"><a class="nav-link" href="#order">線上訂購</a></li>
     </ul>
   </div>
@@ -62,7 +45,6 @@
 <section id="product" class="container py-5">
   <h2 class="section-title text-center">生乳捲商品介紹</h2>
   <div class="row g-4">
-
     <div class="col-md-4">
       <div class="card">
         <img src="images/roll1.jpg" class="card-img-top rounded-top" alt="原味生乳捲">
@@ -72,7 +54,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-4">
       <div class="card">
         <img src="images/roll2.jpg" class="card-img-top rounded-top" alt="巧克力生乳捲">
@@ -82,7 +63,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-md-4">
       <div class="card">
         <img src="images/roll3.jpg" class="card-img-top rounded-top" alt="抹茶生乳捲">
@@ -92,64 +72,59 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- 勾選商品區（價目表） -->
-<section id="price" class="container py-5">
-  <h2 class="section-title text-center">生乳捲系列｜價目表</h2>
+<!-- 購物車區 -->
+<section id="cartSection" class="container py-5">
+  <h2 class="section-title text-center">價目表 / 購物車</h2>
   <div class="row g-4">
+
+    <!-- 商品卡片範例 -->
     <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll1.jpg" alt="原味生乳捲" class="mb-2">
-        <h5 class="fw-bold">原味生乳捲</h5>
-        <p>NT$ 330</p>
-        <input type="checkbox" class="item" data-price="330">
+      <div class="card p-3 text-center">
+        <img src="images/roll1.jpg" style="width:120px;">
+        <h5>原味生乳捲</h5>
+        <p>NT$330</p>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+          <button onclick="changeQtyCart(this,-1)">−</button>
+          <input type="number" value="1" min="1" style="width:50px;">
+          <button onclick="changeQtyCart(this,1)">＋</button>
+        </div>
+        <button class="btn btn-sweet mt-2" onclick="addToCart(this)">加入購物車</button>
       </div>
     </div>
+
     <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll2.jpg" alt="巧克力生乳捲" class="mb-2">
-        <h5 class="fw-bold">巧克力生乳捲</h5>
-        <p>NT$ 330</p>
-        <input type="checkbox" class="item" data-price="330">
+      <div class="card p-3 text-center">
+        <img src="images/roll2.jpg" style="width:120px;">
+        <h5>巧克力生乳捲</h5>
+        <p>NT$330</p>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+          <button onclick="changeQtyCart(this,-1)">−</button>
+          <input type="number" value="1" min="1" style="width:50px;">
+          <button onclick="changeQtyCart(this,1)">＋</button>
+        </div>
+        <button class="btn btn-sweet mt-2" onclick="addToCart(this)">加入購物車</button>
       </div>
     </div>
+
     <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll3.jpg" alt="抹茶生乳捲" class="mb-2">
-        <h5 class="fw-bold">抹茶生乳捲</h5>
-        <p>NT$ 330</p>
-        <input type="checkbox" class="item" data-price="330">
+      <div class="card p-3 text-center">
+        <img src="images/roll3.jpg" style="width:120px;">
+        <h5>抹茶生乳捲</h5>
+        <p>NT$330</p>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+          <button onclick="changeQtyCart(this,-1)">−</button>
+          <input type="number" value="1" min="1" style="width:50px;">
+          <button onclick="changeQtyCart(this,1)">＋</button>
+        </div>
+        <button class="btn btn-sweet mt-2" onclick="addToCart(this)">加入購物車</button>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll4.jpg" alt="提拉米蘇生乳捲" class="mb-2">
-        <h5 class="fw-bold">提拉米蘇生乳捲</h5>
-        <p>NT$ 499</p>
-        <input type="checkbox" class="item" data-price="499">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll5.jpg" alt="芋泥生乳捲" class="mb-2">
-        <h5 class="fw-bold">芋泥生乳捲</h5>
-        <p>NT$ 499</p>
-        <input type="checkbox" class="item" data-price="499">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card text-center p-3">
-        <img src="images/roll6.jpg" alt="草莓生乳捲" class="mb-2">
-        <h5 class="fw-bold">草莓生乳捲</h5>
-        <p>NT$ 499</p>
-        <input type="checkbox" class="item" data-price="499">
-      </div>
-    </div>
+
   </div>
-  <h3 class="mt-4 text-center">總價: $<span id="totalCheckbox">0</span></h3>
+  <h3 class="mt-4 text-center">總價: NT$ <span id="cartTotal">0</span></h3>
 </section>
 
 <!-- 線上訂購表單 -->
@@ -170,9 +145,6 @@
         <option value="330">原味生乳捲 NT$330</option>
         <option value="330">巧克力生乳捲 NT$330</option>
         <option value="330">抹茶生乳捲 NT$330</option>
-        <option value="499">提拉米蘇生乳捲 NT$499</option>
-        <option value="499">芋泥生乳捲 NT$499</option>
-        <option value="499">草莓生乳捲 NT$499</option>
       </select>
     </div>
     <div class="mb-3 d-flex align-items-center gap-2">
@@ -191,50 +163,61 @@
 </footer>
 
 <script>
-  // 勾選商品區總價 + 卡片動畫
-  const items = document.querySelectorAll('.item');
-  const totalCheckbox = document.getElementById('totalCheckbox');
+let cart = [];
 
-  function updateTotalCheckbox() {
-    let total = 0;
-    items.forEach(item => {
-      const card = item.closest('.card');
-      if(item.checked){
-        total += parseInt(item.dataset.price);
-        card.classList.add('checked');
-      } else {
-        card.classList.remove('checked');
-      }
-    });
-    totalCheckbox.textContent = total;
-    totalCheckbox.classList.remove('total-animate');
-    void totalCheckbox.offsetWidth; // 重新觸發動畫
-    totalCheckbox.classList.add('total-animate');
-  }
-  items.forEach(item => item.addEventListener('change', updateTotalCheckbox));
+function addToCart(btn){
+  const card = btn.closest('.card');
+  const name = card.querySelector('h5').innerText;
+  const price = parseInt(card.querySelector('p').innerText.replace('NT$',''));
+  const qty = parseInt(card.querySelector('input').value);
 
-  // 線上訂購表單總價
-  function updateOrderPrice(){
-    const price = parseInt(document.getElementById('productSelect').value);
-    const qty = parseInt(document.getElementById('qty').value);
-    document.getElementById('totalOrder').innerText = price * qty;
+  const existing = cart.find(item=>item.name===name);
+  if(existing){
+    existing.qty += qty;
+  } else {
+    cart.push({name, price, qty});
   }
 
-  function changeQty(n){
-    const q = document.getElementById('qty');
-    q.value = Math.max(1, parseInt(q.value)+n);
-    updateOrderPrice();
-  }
+  updateCartTotal();
+  alert(name + " 已加入購物車");
+}
 
-  document.getElementById('orderForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    alert('訂購成功！我們會盡快與您聯絡');
-    this.reset();
-    updateOrderPrice();
+function changeQtyCart(btn,n){
+  const input = btn.parentElement.querySelector('input');
+  input.value = Math.max(1, parseInt(input.value) + n);
+}
+
+function updateCartTotal(){
+  let total = 0;
+  cart.forEach(item=>{
+    total += item.price * item.qty;
   });
+  document.getElementById('cartTotal').innerText = total;
+}
 
-  // 初始化表單總價
+// 線上訂購表單總價
+function updateOrderPrice(){
+  const price = parseInt(document.getElementById('productSelect').value);
+  const qty = parseInt(document.getElementById('qty').value);
+  document.getElementById('totalOrder').innerText = price * qty;
+}
+
+function changeQty(n){
+  const q = document.getElementById('qty');
+  q.value = Math.max(1, parseInt(q.value)+n);
   updateOrderPrice();
+}
+
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('訂購成功！我們會盡快與您聯絡');
+  this.reset();
+  updateOrderPrice();
+});
+
+// 初始化
+updateOrderPrice();
+updateCartTotal();
 </script>
 
 </body>
