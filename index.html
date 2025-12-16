@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生乳捲訂購網</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#FFF0F5,#FFE4E1);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 飄動背景氣泡 */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: rise 10s linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(100vh) scale(1); }
+  100% { transform: translateY(-50vh) scale(1.5); }
+}
+
+/* 卡片樣式 */
+.card { border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform .3s; position: relative; background-color: #fff3f8; }
+.card:hover { transform: translateY(-5px); }
+.btn-sweet { background-color: #FFB6C1; color:#fff; border-radius: 25px; transition: transform 0.1s; }
+.btn-sweet:active { transform: scale(0.95); }
+.qty { width: 60px; margin: 0 auto; }
+
+/* 飄動愛心 */
+@keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+.heart { position: absolute; top:10px; right:10px; font-size:24px; color:#FF69B4; animation: float 1.5s infinite; }
+
+/* 總價動畫 */
+@keyframes priceUpdate {0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
+#cartTotal.animate { animation: priceUpdate 0.3s ease; }
+
+.cart-list { background-color:#FFF0F5; padding:15px; border-radius:15px; margin-top:20px; }
+
+</style>
+</head>
+<body>
+
+<!-- 背景氣泡 -->
+<div id="bubbles"></div>
+
+<nav class="navbar navbar-expand-lg shadow-sm mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Fresh Roll</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="#products">商品介紹</a></li>
+      <li class="nav-item"><a class="nav-link" href="#cart">購物車</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+<h1 class="text-center mb-4">生乳捲訂購網站</h1>
+
+<!-- 商品展示 -->
+<section id="products" class="row g-4">
+  <!-- 商品卡片 -->
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">🐮</div>
+      <img src="images/roll1.jpg" class="img-fluid rounded" alt="原味">
+      <h5 class="mt-2">原味生乳捲</h5>
+      <p class="price">NT$ 330</p>
+      <button class="btn btn-sweet add-to-cart" data-name="原味生乳捲" data-price="330">加入購物車</button>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">🍫</div>
+      <img src="images/roll2.jpg" class="img-fluid rounded" alt="巧克力">
+      <h5 class="mt-2">巧克力生乳捲</h5>
+      <p class="price">NT$ 330</p>
+      <button class="btn btn-sweet add-to-cart" data-name="巧克力生乳捲" data-price="330">加入購物車</button>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">🍵</div>
+      <img src="images/roll3.jpg" class="img-fluid rounded" alt="抹茶">
+      <h5 class="mt-2">抹茶生乳捲</h5>
+      <p class="price">NT$ 330</p>
+      <button class="btn btn-sweet add-to-cart" data-name="抹茶生乳捲" data-price="330">加入購物車</button>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">☕️</div>
+      <img src="images/roll4.jpg" class="img-fluid rounded" alt="提拉米蘇">
+      <h5 class="mt-2">提拉米蘇生乳捲</h5>
+      <p class="price">NT$ 499</p>
+      <button class="btn btn-sweet add-to-cart" data-name="提拉米蘇生乳捲" data-price="499">加入購物車</button>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">🍠</div>
+      <img src="images/roll5.jpg" class="img-fluid rounded" alt="芋泥">
+      <h5 class="mt-2">芋泥生乳捲</h5>
+      <p class="price">NT$ 499</p>
+      <button class="btn btn-sweet add-to-cart" data-name="芋泥生乳捲" data-price="499">加入購物車</button>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <div class="card p-3 text-center">
+      <div class="heart">🍓</div>
+      <img src="images/roll6.jpg" class="img-fluid rounded" alt="草莓">
+      <h5 class="mt-2">草莓生乳捲</h5>
+      <p class="price">NT$ 499</p>
+      <button class="btn btn-sweet add-to-cart" data-name="草莓生乳捲" data-price="499">加入購物車</button>
+    </div>
+  </div>
+</section>
+
+<!-- 購物車 -->
+<section id="cart" class="mt-5">
+<h2>購物車</h2>
+<div class="cart-list" id="cartList">
+  <p>還沒有商品喔～</p>
+</div>
+<h4 class="mt-3">總價：NT$ <span id="cartTotal">0</span></h4>
+
+<!-- 客戶資料 -->
+<h4 class="mt-3">訂購人資訊</h4>
+<input type="text" class="form-control mb-2" id="customerName" placeholder="姓名" required>
+<input type="tel" class="form-control mb-2" id="customerPhone" placeholder="電話" required>
+
+<!-- PayPal 結帳 -->
+<form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+  <input type="hidden" name="cmd" value="_cart">
+  <input type="hidden" name="business" value="w0930170153">
+  <input type="hidden" name="currency_code" value="TWD">
+  <input type="hidden" name="upload" value="1">
+  <input type="hidden" name="custom" id="customerInfo" value="">
+  <input type="submit" class="btn btn-sweet mt-2 w-100" value="結帳">
+</form>
+</section>
+
+<script>
+// 背景氣泡
+const bubblesContainer = document.getElementById('bubbles');
+for(let i=0;i<20;i++){
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  bubble.style.width = bubble.style.height = Math.random()*30+20+'px';
+  bubble.style.left = Math.random()*100+'%';
+  bubble.style.background = `rgba(255,182,193,${Math.random()})`;
+  bubble.style.animationDuration = (Math.random()*5+5)+'s';
+  bubblesContainer.appendChild(bubble);
+}
+
+// 購物車邏輯
+let cart = [];
+function updateCartUI() {
+  const cartList = document.getElementById('cartList');
+  const cartTotal = document.getElementById('cartTotal');
+  cartList.innerHTML = '';
+  let total = 0;
+  if(cart.length === 0) cartList.innerHTML='<p>還沒有商品喔～</p>';
+  else{
+    cart.forEach((item,index)=>{
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('d-flex','justify-content-between','align-items-center','mb-2');
+      itemDiv.innerHTML=`<span>${item.name} x ${item.qty}</span>
+        <span>NT$ ${item.price * item.qty}</span>
+        <button class="btn btn-sm btn-outline-danger">刪除</button>`;
+      itemDiv.querySelector('button').addEventListener('click',()=>{ cart.splice(index,1); updateCartUI(); });
+      cartList.appendChild(itemDiv);
+      total += item.price*item.qty;
+    });
+  }
+  cartTotal.textContent=total;
+  cartTotal.classList.remove('animate'); void cartTotal.offsetWidth; cartTotal.classList.add('animate');
+
+  // PayPal
+  const paypalForm = document.getElementById('paypalForm');
+  paypalForm.querySelectorAll('input[name^="item_name"]').forEach(el=>el.remove());
+  paypalForm.querySelectorAll('input[name^="amount"]').forEach(el=>el.remove());
+  paypalForm.querySelectorAll('input[name^="quantity"]').forEach(el=>el.remove());
+  cart.forEach((item,index)=>{
+    const inputName=document.createElement('input'); inputName.type='hidden'; inputName.name=`item_name_${index+1}`; inputName.value=item.name; paypalForm.appendChild(inputName);
+    const inputAmount=document.createElement('input'); inputAmount.type='hidden'; inputAmount.name=`amount_${index+1}`; inputAmount.value=item.price; paypalForm.appendChild(inputAmount);
+    const inputQty=document.createElement('input'); inputQty.type='hidden'; inputQty.name=`quantity_${index+1}`; inputQty.value=item.qty; paypalForm.appendChild(inputQty);
+  });
+
+  document.getElementById('customerInfo').value = `姓名:${document.getElementById('customerName').value}，電話:${document.getElementById('customerPhone').value}`;
+}
+
+document.querySelectorAll('.add-to-cart').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const name=btn.dataset.name;
+    const price=parseInt(btn.dataset.price);
+    const existing=cart.find(i=>i.name===name);
+    if(existing){ existing.qty+=1; } else { cart.push({name:name,price:price,qty:1}); }
+    updateCartUI();
+  });
+});
+
+document.getElementById('customerName').addEventListener('input',updateCartUI);
+document.getElementById('customerPhone').addEventListener('input',updateCartUI);
+updateCartUI();
+</script>
+
+</body>
+</html>
+
+
+    
