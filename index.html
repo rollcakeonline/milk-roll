@@ -248,6 +248,76 @@ document.getElementById('orderForm').addEventListener('submit', function(e){
   updatePrice();
 });
 </script>
+<h2>生乳捲訂購</h2>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="330">
+    原味 330
+    <img src="images/原味.jpg" alt="原味生乳捲" width="100">
+  </label>
+</div>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="330">
+    巧克力 330
+    <img src="images/巧克力.jpg" alt="巧克力生乳捲" width="100">
+  </label>
+</div>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="330">
+    抹茶 330
+    <img src="images/抹茶.jpg" alt="抹茶生乳捲" width="100">
+  </label>
+</div>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="499">
+    提拉米蘇 499
+    <img src="images/提拉米蘇.jpg" alt="提拉米蘇生乳捲" width="100">
+  </label>
+</div>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="499">
+    芋泥 499
+    <img src="images/芋泥.jpg" alt="芋泥生乳捲" width="100">
+  </label>
+</div>
+
+<div class="product">
+  <label>
+    <input type="checkbox" class="item" data-price="499">
+    草莓 499
+    <img src="images/草莓.jpg" alt="草莓生乳捲" width="100">
+  </label>
+</div>
+
+<!-- 總價顯示 -->
+<h3>總價: $<span id="total">0</span></h3>
+
+<!-- JavaScript 自動計算總價 -->
+<script>
+  const items = document.querySelectorAll('.item');
+  const totalSpan = document.getElementById('total');
+
+  function updateTotal() {
+    let total = 0;
+    items.forEach(item => {
+      if (item.checked) {
+        total += parseInt(item.dataset.price);
+      }
+    });
+    totalSpan.textContent = total;
+  }
+
+  items.forEach(item => item.addEventListener('change', updateTotal));
+</script>
 
 </body>
 </html>
