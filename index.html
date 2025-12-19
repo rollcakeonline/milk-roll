@@ -297,6 +297,12 @@
   font-weight:900;
   color:#c0392b;
 }
+.img-note{
+  font-size: 12px;
+  color: rgba(0,0,0,.55);
+  text-align: center;
+  margin-top: 6px;
+}
   </style>
 </head>
 
@@ -660,13 +666,39 @@
         <div class="mini-note">
           銀行名稱：中國信託<br>
           銀行代碼：822<br>
-          帳號：901565794604<br>
+          帳號：190540195026<br>
         </div>
         <div class="mini-note mt-2">（完成轉帳後可提供末五碼，方便對帳）</div>
       </div>
 
       <button class="btn btn-sweet w-100" id="submitOrderBtn">送出訂單</button>
       <div class="mini-note text-center mt-2" id="sendHint" style="opacity:.85;"></div>
+<div class="text-center mt-3" id="afterOrderContact" style="display:none;">
+  <div class="fw-bold mb-2">📩 下單完成後歡迎聯絡我們</div>
+
+ <a id="lineContactBtn"
+   href="https://lin.ee/Bk8uDSG"
+   target="_blank"
+     style="
+       display:inline-flex;
+       align-items:center;
+       gap:10px;
+       background:#06C755;
+       color:#fff;
+       padding:10px 18px;
+       border-radius:999px;
+       font-weight:900;
+       text-decoration:none;
+       box-shadow:0 6px 14px rgba(0,0,0,.15);
+     ">
+    <img src="line.png" style="width:24px;height:24px;border-radius:50%;">
+    聯絡官方 LINE
+  </a>
+
+  <div class="mini-note mt-2">
+    如需確認取貨時間、付款或訂單內容，請主動聯絡我們
+  </div>
+</div>
 
       <div class="text-center mt-3">
         <button class="btn btn-outline-secondary btn-sm" id="clearCartBtn">清空購物車</button>
@@ -1003,6 +1035,22 @@
         await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CLIENT, templateParams);
 
         alert("✅ 下單成功！客人與店家都已收到 Email 通知～");
+// 🔗 組 LINE 預填訊息（帶訂單編號）
+const lineMessage = `您好，我剛在官網下單
+訂單編號：${orderId}
+想確認訂單內容，謝謝 🙏`;
+
+// LINE 官方帳聊天連結（帶文字）
+const lineUrl =
+  "https://line.me/R/oaMessage/@112bxcsr/?" +
+  encodeURIComponent(lineMessage);
+
+// 套用到按鈕
+const lineBtn = document.getElementById("lineContactBtn");
+if (lineBtn) {
+  lineBtn.href = lineUrl;
+}
+document.getElementById("afterOrderContact").style.display = "block";
 
         // 送出後清空購物車
         cart = {};
@@ -1024,8 +1072,20 @@
       }
     });
 
-    // 初次渲染
-    renderCart();
+   // 初次渲染
+renderCart();
+
+// ✅ 自動在每張商品圖下面加「圖片僅供參考」
+(function addImageNotes(){
+  document.querySelectorAll(".product-img").forEach(img=>{
+    const next = img.nextElementSibling;
+    if(next && next.classList.contains("img-note")) return; // 避免重複
+    img.insertAdjacentHTML(
+      "afterend",
+      "<div class='img-note'>圖片僅供參考</div>"
+    );
+  });
+})();
   </script>
 <!-- 右下角 LINE 浮動按鈕 -->
 <a href="https://lin.ee/Bk8uDSG"
