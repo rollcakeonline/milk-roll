@@ -1080,7 +1080,7 @@ if(!isValidEmail(custEmail)){
         // ✅ 寫入 Google 試算表（補上 shipping_fee）
         // ✅ 先送到 Google 試算表，成功才寄信
 async function postToSheet(payload) {
-  const url = "https://script.google.com/macros/s/AKfycbyItNEEEpidnYhvMNLx2QDCH8f3lRwYLXE9XQVaRVOsZ2PgifIRaCw7I5R2ju7xgmJU/exec";
+  const url = "https://script.google.com/macros/s/AKfycby6fWyV6U6520UhBjj1XHhiH_79WUoVIgr4nUuF2lCKUlmCUx_tpaQ_0P3jquBQc_63Lg/exec", {
 
   // ⚠️ 不要用 no-cors，因為你會拿不到成功/失敗結果
   const res = await fetch(url, {
