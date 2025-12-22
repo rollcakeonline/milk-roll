@@ -1080,7 +1080,25 @@ if(!isValidEmail(custEmail)){
         // ✅ 寫入 Google 試算表（補上 shipping_fee）
         // ✅ 先送到 Google 試算表，成功才寄信
 async function postToSheet(payload) {
-  const url = "https://script.google.com/macros/s/AKfycbwdSFMYYRplgg5cy_O017NM79rAj1sUUjg3faE7UDJk9D9jTItcwCPQt1Y4KwEPr-4XHg/exec", {
+  const url = "https://script.google.com/macros/s/AKfycbwdSFMYYRplgg5cy_O017NM79rAj1sUUjg3faE7UDJk9D9jTItcwCPQt1Y4KwEPr-4XHg/exec";
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error("寫入試算表失敗（HTTP " + res.status + "）");
+  }
+
+  const data = await res.json();
+  if (!data || data.success !== true) {
+    throw new Error("寫入試算表失敗（Apps Script 回傳失敗）");
+  }
+
+  return data;
+}
 
   // ⚠️ 不要用 no-cors，因為你會拿不到成功/失敗結果
   const res = await fetch(url, {
