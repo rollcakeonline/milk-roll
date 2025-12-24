@@ -303,6 +303,54 @@
   text-align: center;
   margin-top: 6px;
 }
+/* ❌ 已售完樣式 */
+.sold-out {
+  position: relative;
+  opacity: 0.55;
+}
+
+.sold-out::after {
+  content: "已售完";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.sold-out .btn-sweet {
+  pointer-events: none;
+  background: #bbb;
+  box-shadow: none;
+}
+/* 口味快速總覽 */
+.flavor-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin: 10px 0 14px;
+}
+
+.flavor-nav a{
+  text-decoration:none;
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(0,0,0,.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 13px;
+  color: #3a2f2f;
+}
+
+/* ✅ 點下去滑動更順 */
+html{ scroll-behavior:smooth; }
+
   </style>
 </head>
 
@@ -358,10 +406,22 @@
 
     <!-- 菜單 -->
     <h2 id="menu" class="section-title">🌸 生乳捲菜單（生乳捲＋巴斯克）</h2>
+<div class="flavor-nav">
+  <a href="#p-vanilla">🐮 原味</a>
+  <a href="#p-choco">🍫 巧克力</a>
+  <a href="#p-matcha">🍵 抹茶</a>
+<a href="#p-blacktea">🫖 紅茶</a>
+  <a href="#p-caramel">🍮 焦糖</a>
+  <a href="#p-tiramisu">☕️ 提拉米蘇</a>
+  <a href="#p-taro">🍠 芋泥</a>
+  <a href="#p-strawberry">🍓 草莓</a>
+  <!-- 有巴斯克再打開這行 -->
+  <!-- <a href="#p-basque">🧀 巴斯克</a> -->
+</div>
     <div class="row g-4">
 
       <!-- 1 -->
-<div class="col-md-4">
+<div class="col-md-4" id="p-vanilla">
   <div class="card-soft">
     <div class="badge-cute">🐮 原味</div>
     <img src="images/roll1.jpg" class="product-img" alt="原味生乳捲">
@@ -385,7 +445,7 @@
   </div>
 </div>
       <!-- 2 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-choco">
         <div class="card-soft">
           <div class="badge-cute">🍫 巧克力</div>
           <img src="images/roll2.jpg" class="product-img" alt="巧克力生乳捲">
@@ -408,7 +468,7 @@
       </div>
 
       <!-- 3 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-matcha">
         <div class="card-soft">
           <div class="badge-cute">🍵 抹茶</div>
           <img src="images/roll3.jpg" class="product-img" alt="抹茶生乳捲">
@@ -431,7 +491,7 @@
       </div>
 
 <!-- ✅ 新增 4：紅茶 -->
-<div class="col-md-4">
+<div class="col-md-4" id="p-blacktea">
   <div class="card-soft">
     <div class="badge-cute">🫖 紅茶</div>
     <img src="images/roll8.jpg" class="product-img" alt="紅茶生乳捲">
@@ -454,7 +514,7 @@
 </div>
 
       <!-- ✅ 新增 5：焦糖 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-caramel">
         <div class="card-soft">
           <div class="badge-cute">🍮 焦糖</div>
           <img src="images/roll7.jpg" class="product-img" alt="焦糖生乳捲">
@@ -478,7 +538,7 @@
 
      
       <!-- 6 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-tiramisu">
         <div class="card-soft">
           <div class="badge-cute">☕️ 提拉米蘇</div>
           <img src="images/roll4.jpg" class="product-img" alt="提拉米蘇生乳捲">
@@ -501,7 +561,7 @@
       </div>
 
      <!-- 7 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-taro">
         <div class="card-soft">
           <div class="badge-cute">🍠 芋泥</div>
           <img src="images/roll5.jpg" class="product-img" alt="芋泥生乳捲">
@@ -524,7 +584,7 @@
       </div>
 
       <!-- 8 -->
-      <div class="col-md-4">
+      <div class="col-md-4" id="p-strawberry">
         <div class="card-soft">
           <div class="badge-cute">🍓 草莓</div>
           <img src="images/roll6.jpg" class="product-img" alt="草莓生乳捲">
@@ -547,7 +607,7 @@
       </div>
 <!-- ✅ 新增：六寸巴斯克蛋糕 -->
 <div class="col-md-4">
-  <div class="card-soft">
+    <div class="card-soft sold-out">
     <div class="badge-cute">🧀 巴斯克</div>
     <img src="images/roll9.jpg" class="product-img" alt="六寸巴斯克蛋糕">
     <div class="p-3">
@@ -562,8 +622,9 @@
         </div>
       </div>
 
-      <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🧀"
-        data-id="basque2" data-name="六寸巴斯克蛋糕" data-price="150">加入購物車</button>
+      <button class="btn btn-sweet w-100 mt-3" disabled>
+  已售完
+</button>
     </div>
   </div>
 </div>
