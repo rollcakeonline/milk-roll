@@ -303,6 +303,34 @@
   text-align: center;
   margin-top: 6px;
 }
+
+/* ✅ 手機版 */
+@media (max-width: 768px){
+  #menu + .row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card-soft{
+    border-radius: 14px;
+  }
+
+  .product-img{
+    aspect-ratio: 1 / 1;
+  }
+
+  .card-soft .fw-bold{
+    font-size: 15px;
+  }
+
+  .btn-sweet{
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+
   </style>
 </head>
 
@@ -357,7 +385,7 @@
     </section>
 
     <!-- 菜單 -->
-    <h2 id="menu" class="section-title">🌸 生乳捲菜單（9 種口味）</h2>
+    <h2 id="menu" class="section-title">🌸 生乳捲菜單（生乳捲＋巴斯克）</h2>
     <div class="row g-4">
 
       <!-- 1 -->
@@ -374,8 +402,8 @@
 
         <div class="price-wrap">
           <span class="sale-badge">優惠</span>
-          <span class="price-old">NT$ 390</span>
-          <span class="price-new">NT$ 330</span>
+          <span class="price-old">NT$ 380</span>
+          <span class="price-new">NT$ 299</span>
         </div>
       </div>
 
@@ -397,8 +425,8 @@
               </div>
               <div class="price-wrap">
   <span class="sale-badge">優惠</span>
-  <span class="price-old">NT$ 390</span>
-  <span class="price-new">NT$ 330</span>
+  <span class="price-old">NT$ 380</span>
+  <span class="price-new">NT$ 299</span>
 </div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍫"
@@ -420,8 +448,8 @@
               </div>
               <div class="price-wrap">
   <span class="sale-badge">優惠</span>
-  <span class="price-old">NT$ 390</span>
-  <span class="price-new">NT$ 330</span>
+  <span class="price-old">NT$ 380</span>
+  <span class="price-new">NT$ 299</span>
 </div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍵"
@@ -430,7 +458,30 @@
         </div>
       </div>
 
-      <!-- ✅ 新增 4：焦糖 -->
+<!-- ✅ 新增 4：紅茶 -->
+<div class="col-md-4">
+  <div class="card-soft">
+    <div class="badge-cute">🫖 紅茶</div>
+    <img src="images/roll8.jpg" class="product-img" alt="紅茶生乳捲">
+    <div class="p-3">
+      <div class="d-flex align-items-start justify-content-between">
+        <div>
+          <div class="fw-bold fs-5">紅茶生乳捲</div>
+          <div class="mini-note">茶香溫潤，奶香順口</div>
+        </div>
+        <div class="price-wrap">
+          <span class="sale-badge">優惠</span>
+          <span class="price-old">NT$ 380</span>
+          <span class="price-new">NT$ 299</span>
+        </div>
+      </div>
+      <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🫖"
+        data-id="blacktea" data-name="紅茶生乳捲" data-price="360">加入購物車</button>
+    </div>
+  </div>
+</div>
+
+      <!-- ✅ 新增 5：焦糖 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍮 焦糖</div>
@@ -444,7 +495,7 @@
               <div class="price-wrap">
   <span class="sale-badge">優惠</span>
   <span class="price-old">NT$ 450</span>
-  <span class="price-new">NT$ 360</span>
+  <span class="price-new">NT$ 399</span>
 </div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍮"
@@ -453,54 +504,8 @@
         </div>
       </div>
 
-      <!-- ✅ 新增 5：卡士達 -->
-      <div class="col-md-4">
-        <div class="card-soft">
-          <div class="badge-cute">🥚 卡士達</div>
-          <img src="images/roll8.jpg" class="product-img" alt="卡士達生乳捲">
-          <div class="p-3">
-            <div class="d-flex align-items-start justify-content-between">
-              <div>
-                <div class="fw-bold fs-5">卡士達生乳捲</div>
-                <div class="mini-note">香草卡士達，滑順濃厚</div>
-              </div>
-               <div class="price-wrap">
-  <span class="sale-badge">優惠</span>
-  <span class="price-old">NT$ 450</span>
-  <span class="price-new">NT$ 360</span>
-</div>
-            </div>
-            <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🥚"
-              data-id="custard" data-name="卡士達生乳捲" data-price="360">加入購物車</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ✅ 新增 6：泰奶 -->
-      <div class="col-md-4">
-        <div class="card-soft">
-          <div class="badge-cute">🧋 泰奶</div>
-          <img src="images/roll9.jpg" class="product-img" alt="泰奶生乳捲">
-          <div class="p-3">
-            <div class="d-flex align-items-start justify-content-between">
-              <div>
-                <div class="fw-bold fs-5">泰奶生乳捲</div>
-                <div class="mini-note">茶香奶香，超級耐喝系</div>
-              </div>
-               <div class="price-wrap">
-  <span class="sale-badge">優惠</span>
-  <span class="price-old">NT$ 450</span>
-  <span class="price-new">NT$ 360</span>
-</div>
-            </div>
-            <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🧋"
-              data-id="thaitea" data-name="泰奶生乳捲" data-price="360">加入購物車</button>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- 7 -->
+     
+      <!-- 6 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">☕️ 提拉米蘇</div>
@@ -513,8 +518,8 @@
               </div>
              <div class="price-wrap">
   <span class="sale-badge">優惠</span>
-  <span class="price-old">NT$ 550</span>
-  <span class="price-new">NT$ 460</span>
+  <span class="price-old">NT$ 450</span>
+  <span class="price-new">NT$ 399</span>
 </div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="☕️"
@@ -523,7 +528,7 @@
         </div>
       </div>
 
-     <!-- 8 -->
+     <!-- 7 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍠 芋泥</div>
@@ -537,7 +542,7 @@
                <div class="price-wrap">
   <span class="sale-badge">優惠</span>
   <span class="price-old">NT$ 550</span>
-  <span class="price-new">NT$ 460</span>
+  <span class="price-new">NT$ 499</span>
 </div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍠"
@@ -546,7 +551,7 @@
         </div>
       </div>
 
-      <!-- 9 -->
+      <!-- 8 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍓 草莓</div>
@@ -568,6 +573,29 @@
           </div>
         </div>
       </div>
+<!-- ✅ 新增：六寸巴斯克蛋糕 -->
+<div class="col-md-4">
+  <div class="card-soft">
+    <div class="badge-cute">🧀 巴斯克</div>
+    <img src="images/roll9.jpg" class="product-img" alt="六寸巴斯克蛋糕">
+    <div class="p-3">
+      <div class="d-flex align-items-start justify-content-between">
+        <div>
+          <div class="fw-bold fs-5">六寸巴斯克蛋糕</div>
+          <div class="mini-note">濃郁乳酪香，外焦內綿密</div>
+        </div>
+        <div class="price-wrap">
+          <span class="sale-badge">人氣</span>
+          <span class="price-new">NT$ 599</span>
+        </div>
+      </div>
+
+      <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🧀"
+        data-id="basque2" data-name="六寸巴斯克蛋糕" data-price="150">加入購物車</button>
+    </div>
+  </div>
+</div>
+
     <!-- 保存小知識 -->
     <h2 id="tips" class="section-title">❄️ 生乳捲保存小知識</h2>
     <div class="knowledge">
